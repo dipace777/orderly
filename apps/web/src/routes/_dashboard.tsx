@@ -15,9 +15,10 @@ import {
 import { authClient } from "@/lib/auth-client"
 import { trpc } from "@/utils/trpc"
 import { useQuery } from "@tanstack/react-query"
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute, Outlet } from "@tanstack/react-router"
 import { useEffect } from "react"
-export const Route = createFileRoute("/dashboard")({
+
+export const Route = createFileRoute("/_dashboard")({
   component: RouteComponent,
 });
 
@@ -63,8 +64,7 @@ function RouteComponent() {
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="bg-muted/50 mx-auto h-24 w-full max-w-3xl rounded-xl" />
-          <div className="bg-muted/50 mx-auto h-[100vh] w-full max-w-3xl rounded-xl" />
+          <Outlet/>
         </div>
       </SidebarInset>
       <SidebarRight />
