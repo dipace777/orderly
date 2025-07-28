@@ -9,7 +9,6 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "check-types": "turbo check-types",
-    "dev:native": "turbo -F native dev",
     "dev:web": "turbo -F web dev",
     "dev:server": "turbo -F server dev",
     "db:push": "turbo -F server db:push",
@@ -18,6 +17,7 @@
     "db:migrate": "turbo -F server db:migrate",
     "db:start": "turbo -F server db:start",
     "db:watch": "turbo -F server db:watch",
+    "db:seed": "turbo -F server db:seed",
     "db:stop": "turbo -F server db:stop",
     "db:down": "turbo -F server db:down"
   },

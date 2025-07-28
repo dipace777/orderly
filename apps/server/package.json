@@ -14,6 +14,7 @@
     "db:migrate": "prisma migrate dev",
     "db:start": "docker compose up -d",
     "db:watch": "docker compose up",
+    "db:seed":"tsx prisma/seeds/index.ts",
     "db:stop": "docker compose stop",
     "db:down": "docker compose down"
   },

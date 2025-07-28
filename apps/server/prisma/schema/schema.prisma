@@ -1,10 +1,70 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated"
+  provider     = "prisma-client"
+  output       = "../generated"
   moduleFormat = "esm"
 }
 
 datasource db {
   provider = "postgres"
   url      = env("DATABASE_URL")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  items     Item[]
+  createdAt DateTime @default(now())
+}
+
+model Item {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  categoryId  Int
+  category    Category    @relation(fields: [categoryId], references: [id])
+  orderItems  OrderItem[]
+  createdAt   DateTime    @default(now())
+}
+
+model Table {
+  id          Int            @id @default(autoincrement())
+  tableNumber Int            @unique
+  sessions    TableSession[]
+  createdAt   DateTime       @default(now())
+}
+
+model TableSession {
+  id           Int       @id @default(autoincrement())
+  tableId      Int
+  customerName String?
+  startTime    DateTime  @default(now())
+  endTime      DateTime?
+  table        Table     @relation(fields: [tableId], references: [id])
+  orders       Order[]
+}
+
+model Order {
+  id         Int          @id @default(autoincrement())
+  sessionId  Int
+  session    TableSession @relation(fields: [sessionId], references: [id])
+  orderItems OrderItem[]
+  status     OrderStatus  @default(PENDING)
+  createdAt  DateTime     @default(now())
+}
+
+model OrderItem {
+  id       Int   @id @default(autoincrement())
+  orderId  Int
+  itemId   Int
+  quantity Int   @default(1)
+  order    Order @relation(fields: [orderId], references: [id])
+  item     Item  @relation(fields: [itemId], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
 }
