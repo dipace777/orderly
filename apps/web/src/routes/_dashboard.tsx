@@ -17,6 +17,7 @@ import { trpc } from "@/utils/trpc"
 import { useQuery } from "@tanstack/react-query"
 import { createFileRoute, Outlet } from "@tanstack/react-router"
 import { useEffect } from "react"
+import { Toaster } from "sonner"
 
 export const Route = createFileRoute("/_dashboard")({
   component: RouteComponent,
@@ -65,6 +66,7 @@ function RouteComponent() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <Outlet/>
+          <Toaster />
         </div>
       </SidebarInset>
       <SidebarRight />
