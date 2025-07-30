@@ -33,15 +33,11 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LineChart,
-  Line,
   PieChart,
   Pie,
   Cell,
 } from "recharts";
 import {
-  TrendingUp,
-  TrendingDown,
   Users,
   Clock,
   DollarSign,
@@ -72,8 +68,6 @@ export function DayView({ className }: DashboardProps) {
   // Fetch data
   const orders = useQuery(trpc.order.getAll.queryOptions());
   const tables = useQuery(trpc.table.getAll.queryOptions());
-  const categories = useQuery(trpc.category.getAll.queryOptions());
-  const items = useQuery(trpc.item.getAll.queryOptions());
 
   // Auto-refresh logic
   useEffect(() => {
