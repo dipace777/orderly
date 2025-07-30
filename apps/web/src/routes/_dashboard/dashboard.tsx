@@ -1,7 +1,7 @@
 import { trpc } from "@/utils/trpc";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { OrdersTable } from "./-components/orders-table";
+import { DayView } from "./-components/day-view";
 export const Route = createFileRoute("/_dashboard/dashboard")({
   component: RouteComponent,
 });
@@ -11,8 +11,7 @@ function RouteComponent() {
 
   return (
     <div>
-      <h1> Welcome {privateData.data?.user.name}</h1>
-      <OrdersTable />
+      <DayView />
     </div>
   );
 }
