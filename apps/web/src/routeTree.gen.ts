@@ -15,7 +15,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardUsersRouteImport } from './routes/_dashboard/users'
 import { Route as DashboardReportsRouteImport } from './routes/_dashboard/reports'
 import { Route as DashboardOrdersRouteImport } from './routes/_dashboard/orders'
-import { Route as DashboardOrderRouteImport } from './routes/_dashboard/order'
 import { Route as DashboardFoodMenuRouteImport } from './routes/_dashboard/food-menu'
 import { Route as DashboardDashboardRouteImport } from './routes/_dashboard/dashboard'
 
@@ -48,11 +47,6 @@ const DashboardOrdersRoute = DashboardOrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardOrderRoute = DashboardOrderRouteImport.update({
-  id: '/order',
-  path: '/order',
-  getParentRoute: () => DashboardRoute,
-} as any)
 const DashboardFoodMenuRoute = DashboardFoodMenuRouteImport.update({
   id: '/food-menu',
   path: '/food-menu',
@@ -69,7 +63,6 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/dashboard': typeof DashboardDashboardRoute
   '/food-menu': typeof DashboardFoodMenuRoute
-  '/order': typeof DashboardOrderRoute
   '/orders': typeof DashboardOrdersRoute
   '/reports': typeof DashboardReportsRoute
   '/users': typeof DashboardUsersRoute
@@ -79,7 +72,6 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/dashboard': typeof DashboardDashboardRoute
   '/food-menu': typeof DashboardFoodMenuRoute
-  '/order': typeof DashboardOrderRoute
   '/orders': typeof DashboardOrdersRoute
   '/reports': typeof DashboardReportsRoute
   '/users': typeof DashboardUsersRoute
@@ -91,7 +83,6 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/_dashboard/dashboard': typeof DashboardDashboardRoute
   '/_dashboard/food-menu': typeof DashboardFoodMenuRoute
-  '/_dashboard/order': typeof DashboardOrderRoute
   '/_dashboard/orders': typeof DashboardOrdersRoute
   '/_dashboard/reports': typeof DashboardReportsRoute
   '/_dashboard/users': typeof DashboardUsersRoute
@@ -103,7 +94,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/food-menu'
-    | '/order'
     | '/orders'
     | '/reports'
     | '/users'
@@ -113,7 +103,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/food-menu'
-    | '/order'
     | '/orders'
     | '/reports'
     | '/users'
@@ -124,7 +113,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/_dashboard/dashboard'
     | '/_dashboard/food-menu'
-    | '/_dashboard/order'
     | '/_dashboard/orders'
     | '/_dashboard/reports'
     | '/_dashboard/users'
@@ -180,13 +168,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardOrdersRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/order': {
-      id: '/_dashboard/order'
-      path: '/order'
-      fullPath: '/order'
-      preLoaderRoute: typeof DashboardOrderRouteImport
-      parentRoute: typeof DashboardRoute
-    }
     '/_dashboard/food-menu': {
       id: '/_dashboard/food-menu'
       path: '/food-menu'
@@ -207,7 +188,6 @@ declare module '@tanstack/react-router' {
 interface DashboardRouteChildren {
   DashboardDashboardRoute: typeof DashboardDashboardRoute
   DashboardFoodMenuRoute: typeof DashboardFoodMenuRoute
-  DashboardOrderRoute: typeof DashboardOrderRoute
   DashboardOrdersRoute: typeof DashboardOrdersRoute
   DashboardReportsRoute: typeof DashboardReportsRoute
   DashboardUsersRoute: typeof DashboardUsersRoute
@@ -216,7 +196,6 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardDashboardRoute: DashboardDashboardRoute,
   DashboardFoodMenuRoute: DashboardFoodMenuRoute,
-  DashboardOrderRoute: DashboardOrderRoute,
   DashboardOrdersRoute: DashboardOrdersRoute,
   DashboardReportsRoute: DashboardReportsRoute,
   DashboardUsersRoute: DashboardUsersRoute,
